@@ -7,6 +7,6 @@ class Post < ApplicationRecord
 	
 
 
-	validates :title, :description, :price, :status, :negotiable?, :post_type, :owner_id, :category_id, :status, presence: true
+	validates 	:title, :description, :price, :status, :negotiable?, :post_type, :owner_id, :category_id, :status, presence: true
 
 end
