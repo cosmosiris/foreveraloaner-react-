@@ -9,7 +9,7 @@ class CreatePosts < ActiveRecord::Migration[5.1]
     	t.string 		:location
     	t.boolean		:negotiable?
     	t.string		:post_type
-    	t.references	:user
+    	t.references	:owner
     	t.references	:category
 
     	t.timestamps 
