@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20171111002825) do
     t.string "status", default: "open"
     t.string "location"
     t.boolean "negotiable?"
+    t.string "post_type"
     t.bigint "owner_id"
     t.bigint "category_id"
     t.datetime "created_at", null: false
@@ -37,12 +38,12 @@ ActiveRecord::Schema.define(version: 20171111002825) do
   end
 
   create_table "posts_tags", force: :cascade do |t|
-    t.bigint "posts_tags_id"
+    t.bigint "tags_id"
     t.bigint "posts_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["posts_id"], name: "index_posts_tags_on_posts_id"
-    t.index ["posts_tags_id"], name: "index_posts_tags_on_posts_tags_id"
+    t.index ["tags_id"], name: "index_posts_tags_on_tags_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -50,7 +51,7 @@ ActiveRecord::Schema.define(version: 20171111002825) do
     t.text "body"
     t.bigint "reviewer_id"
     t.bigint "reviewee_id"
-    t.string "type"
+    t.string "role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["reviewee_id"], name: "index_reviews_on_reviewee_id"
