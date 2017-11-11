@@ -24,4 +24,14 @@ class User < ApplicationRecord
   has_many :posts, foreign_key: :loaner_id
 
   validates :first_name, :last_name, presence: true
+
+  acts_as_messageable
+
+  def name
+    "#{first_name} #{last_name}"
+  end
+
+  def mailboxer_email(object)
+    nil
+  end
 end
