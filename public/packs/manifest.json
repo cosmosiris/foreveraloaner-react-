@@ -1,5 +1,5 @@
 {
-  "*.js": "/packs/*-4cce7856840dbcb5f88a.js",
-  "application.js": "/packs/application-ccf8204fcf6ea17fc63a.js",
-  "hello_react.js": "/packs/hello_react-95888c425d4cb0461d92.js"
+  "application.js": "/packs/application-def76a481d24c2e35586.js",
+  "hello_react.js": "/packs/hello_react-143c5b70fa2a5ea8219a.js",
+  "server_rendering.js": "/packs/server_rendering-9fd268cc27d148555d0e.js"
 }
