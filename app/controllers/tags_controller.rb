@@ -16,6 +16,7 @@ class TagsController < ApplicationController
     @post = Post.find(params[:post_id])
     @post_tag = Tag.find(params[:id])
     @post_tag.destroy
+
     render json: @post
   end
 
