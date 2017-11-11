@@ -6,7 +6,7 @@ class Navbar extends React.Component {
     return(
     	<div>
     		<ul>
-    			<li>Home</li>
+    			<li><a href="/">Home</a></li>
     			<li>My Profile</li>
     			<li>Create a Post</li>
     		</ul>
