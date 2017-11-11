@@ -20,22 +20,29 @@ class PostsController < ApplicationController
 	end
 
 	def edit
-
+		@post = Post.find(params[:id])
 	end
 
 	def update
-
+		@post = Post.find(params[:id])
+		@post.update_attributes(post_params)
 	end
 
 	def show
-
+		@post = Post.find(params[:id])
 	end
 
 	def destroy
-
+		@post = Post.find(params[:id])
+		@resource.destroy
+		redirect_to posts_path 
 	end
 
 	private
+
+	def post_params
+		params.require(:post).permit(:location, :title, :description, :price, :negotiable?, :post_type, :owner_id, :category_id)
+	end
 
 
 end

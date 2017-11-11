@@ -39,6 +39,14 @@ ActiveRecord::Schema.define(version: 20171110230319) do
   end
 
   create_table "posts_tags", force: :cascade do |t|
+
+    t.bigint "posts_tags_id"
+    t.bigint "posts_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["posts_id"], name: "index_posts_tags_on_posts_id"
+    t.index ["posts_tags_id"], name: "index_posts_tags_on_posts_tags_id"
+
     t.bigint "tag_id"
     t.bigint "post_id"
     t.datetime "created_at", null: false
@@ -96,5 +104,4 @@ ActiveRecord::Schema.define(version: 20171110230319) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
-
 end
