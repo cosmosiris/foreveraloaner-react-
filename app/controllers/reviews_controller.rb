@@ -5,7 +5,7 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    @reviewee = User.find(params[:id])
+    @reviewee = User.find(params[:user_id])
     @review = Review.new(review_params)
 
     if @review.save
@@ -22,9 +22,11 @@ class ReviewsController < ApplicationController
 
   def update
     @review = Review.find(params[:id])
+    @reviewee = User.find(params[:user_id])
+
     @review.update(review_params)
     if @review.save
-      redirect_to user_path(@user)
+      redirect_to user_path(@reviewee)
     else
       render :edit
     end
@@ -32,13 +34,15 @@ class ReviewsController < ApplicationController
 
   def destroy
     @review = Review.find(params[:id])
+    @reviewee = User.find(params[:user_id])
     @review.destroy
-    redirect_to user_path(@user)
+
+    redirect_to user_path(@reviewee)
   end
 
 
   private
   def review_params
-    params.require(:review).permit(:body, :rating)
+    params.require(:review).permit(:body, :rating, :reviewer_id, :reviewee_id, :role)
   end
 end
