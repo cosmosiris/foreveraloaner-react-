@@ -1,5 +1,4 @@
 class ReviewsController < ApplicationController
-
   def new
     @review = Review.new
   end
@@ -18,6 +17,7 @@ class ReviewsController < ApplicationController
 
   def edit
     @review = Review.find(params[:id])
+    @reviewee = User.find(params[:user_id])
   end
 
   def update
@@ -40,9 +40,9 @@ class ReviewsController < ApplicationController
     redirect_to user_path(@reviewee)
   end
 
-
   private
-  def review_params
-    params.require(:review).permit(:body, :rating, :reviewer_id, :reviewee_id, :role)
-  end
+
+    def review_params
+      params.require(:review).permit(:body, :rating, :reviewer_id, :reviewee_id, :role)
+    end
 end

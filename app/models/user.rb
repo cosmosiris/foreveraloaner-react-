@@ -1,9 +1,9 @@
 class User < ApplicationRecord
-
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
   # reviews written as the loaner
   has_many :written_loaner_reviews, -> { where(role: "loaner") }, class_name: "Review", foreign_key: :reviewer_id
   has_many :reviewed_borrowers, through: :written_loaner_reviews, source: :reviewee
@@ -19,7 +19,6 @@ class User < ApplicationRecord
   # reviews received as the borrower
   has_many :received_borrower_reviews, -> { where(role: "loaner") }, class_name: :Review, foreign_key: :reviewee_id
   has_many :loaner_reviewers, through: :received_borrower_reviews, source: :reviewer
-
 
   has_many :transactions, foreign_key: :borrower_id
   has_many :posts, foreign_key: :loaner_id
