@@ -4,12 +4,21 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :authored_reviews, class_name: :reviews, foreign_key: :reviewer_id
+  # reviews written as the loaner
+  has_many :written_loaner_reviews, -> { where(role: "loaner") }, class_name: "Review", foreign_key: :reviewer_id
+  has_many :reviewed_borrowers, through: :written_loaner_reviews, source: :reviewee
 
-  #reviews by borrowers
-  has_many :loaner_reviews, class_name: :reviews, foreign_key: :reviewee_id
-  #reviews by loaners
-  has_many :borrower_reviews, class_name: :reviews, foreign_key: :reviewee_id
+  # reviews written as the borrower
+  has_many :written_borrower_reviews, -> { where(role: "borrower") }, class_name: "Review", foreign_key: :reviewer_id
+  has_many :reviewed_loaners, through: :written_borrower_reviews, source: :reviewee
+
+  #reviews received as the loaner
+  has_many :received_loaner_reviews, -> { where(role: "borrower") }, class_name: "Review", foreign_key: :reviewee_id
+  has_many :borrower_reviewers, through: :received_loaner_reviews, source: :reviewer
+
+  # reviews received as the borrower
+  has_many :received_borrower_reviews, -> { where(role: "loaner") }, class_name: :Review, foreign_key: :reviewee_id
+  has_many :loaner_reviewers, through: :received_borrower_reviews, source: :reviewer
 
   has_many :transactions, foreign_key: :borrower_id
   has_many :posts, foreign_key: :loaner_id

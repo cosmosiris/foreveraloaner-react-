@@ -12,30 +12,46 @@ class PostsController < ApplicationController
 		@post = Post.new(post_params)
 
 		if @post.save
-			redirect_to post_path(@post)
+			render json: @post
 		else
-			@error = @resource.errors.full_messages
-			render :new 
+			@errors = @post.errors.full_messages
+			render json: @errors
 		end
 	end
 
 	def edit
-
+		@post = Post.find(params[:id])
 	end
 
 	def update
+		@post = Post.find(params[:id])
+		@post.update_attributes(post_params)
 
+		if @post.save
+			render json: @post
+		else
+			@errors = @post.errors.full_messages
+			render json: @errors
+		end
 	end
 
 	def show
-
+		@post = Post.find(params[:id])
 	end
 
 	def destroy
+		@post = Post.find(params[:id])
+		@category = @post.category_id
+		@post.destroy
 
+		render json: @category
 	end
 
 	private
+
+	def post_params
+		params.require(:post).permit(:location, :title, :description, :price, :negotiable, :loaner_id, :category_id)
+	end
 
 
 end

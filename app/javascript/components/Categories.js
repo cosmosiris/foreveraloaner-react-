@@ -5,7 +5,7 @@ class Categories extends React.Component {
   render () {
     return(
     	<div>
-    		<p>List of Catories</p>
+    		<p>List of Categories</p>
     	</div>
     )
   }
