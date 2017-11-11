@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 20171110230319) do
+ActiveRecord::Schema.define(version: 20171111002825) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +21,15 @@ ActiveRecord::Schema.define(version: 20171110230319) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "post_tags", force: :cascade do |t|
+    t.bigint "tag_id"
+    t.bigint "post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_post_tags_on_post_id"
+    t.index ["tag_id"], name: "index_post_tags_on_tag_id"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.string "description"
@@ -29,30 +37,12 @@ ActiveRecord::Schema.define(version: 20171110230319) do
     t.string "status", default: "open"
     t.string "location"
     t.boolean "negotiable"
-    t.string "post_type"
     t.bigint "loaner_id"
     t.bigint "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_posts_on_category_id"
     t.index ["loaner_id"], name: "index_posts_on_loaner_id"
-  end
-
-  create_table "post_tags", force: :cascade do |t|
-
-    t.bigint "post_tags_id"
-    t.bigint "posts_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["posts_id"], name: "index_post_tags_on_posts_id"
-    t.index ["post_tags_id"], name: "index_post_tags_on_post_tags_id"
-
-    t.bigint "tag_id"
-    t.bigint "post_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["posts_id"], name: "index_post_tags_on_post_id"
-    t.index ["tags_id"], name: "index_post_tags_on_tag_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -104,4 +94,5 @@ ActiveRecord::Schema.define(version: 20171110230319) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
+
 end
