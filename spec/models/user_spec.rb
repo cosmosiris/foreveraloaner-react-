@@ -32,7 +32,7 @@ describe User do
 
   context "user posts" do
     it "has many posts" do
-      post = Post.create(title: "Lawn Mower", description: "Mows your grass", status: "open", negotiable: true, post_type: "stuff", loaner: user, category: category)
+      post = Post.create(title: "Lawn Mower", description: "Mows your grass", status: "open", negotiable: true, loaner: user, category: category)
       expect(user.posts.first).to eq(post)
     end
   end
