@@ -5,3 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+User.destroy_all
+Review.destroy_all
+
+borrower = User.create(first_name: "britt", last_name: "nevins", email:"britt@nevins.com", password: "asdfasdfasdf")
+lender = User.create(first_name: "Olivia", last_name: "Noland", email:"olivia@noland.com", password: "asdfasdfasdf")
+
+
+Review.create(rating: 3, body: "great", reviewer: borrower, reviewee: lender, role:"borrower")
+
+

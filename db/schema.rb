@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20171110230319) do
 
   # These are extensions that must be enabled in order to support this database
@@ -38,18 +39,41 @@ ActiveRecord::Schema.define(version: 20171110230319) do
   end
 
   create_table "posts_tags", force: :cascade do |t|
-    t.bigint "tags_id"
-    t.bigint "posts_id"
+    t.bigint "tag_id"
+    t.bigint "post_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["posts_id"], name: "index_posts_tags_on_posts_id"
-    t.index ["tags_id"], name: "index_posts_tags_on_tags_id"
+    t.index ["posts_id"], name: "index_posts_tags_on_post_id"
+    t.index ["tags_id"], name: "index_posts_tags_on_tag_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "rating"
+    t.text "body"
+    t.bigint "reviewer_id"
+    t.bigint "reviewee_id"
+    t.string "role"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["reviewee_id"], name: "index_reviews_on_reviewee_id"
+    t.index ["reviewer_id"], name: "index_reviews_on_reviewer_id"
   end
 
   create_table "tags", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "transactions", force: :cascade do |t|
+    t.bigint "borrower_id"
+    t.bigint "post_id"
+    t.string "duration"
+    t.integer "final_price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["borrower_id"], name: "index_transactions_on_borrower_id"
+    t.index ["post_id"], name: "index_transactions_on_post_id"
   end
 
   create_table "users", force: :cascade do |t|
