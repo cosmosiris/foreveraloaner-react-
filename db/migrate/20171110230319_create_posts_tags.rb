@@ -1,8 +1,8 @@
-class CreatePostsTags < ActiveRecord::Migration[5.1]
+class CreatePostTags < ActiveRecord::Migration[5.1]
   def change
-    create_table :posts_tags do |t|
-    	t.references		:tags
-    	t.references		:posts
+    create_table :post_tags do |t|
+    	t.references		:tag
+    	t.references		:post 
 
     	t.timestamps
     end

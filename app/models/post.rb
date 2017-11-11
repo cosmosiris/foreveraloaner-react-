@@ -1,5 +1,5 @@
 class Post < ApplicationRecord
-	belongs_to :owner, class: "User"
+	belongs_to :owner, class_name: "User"
 	belongs_to :category
 
 	has_many    :posts_tags
