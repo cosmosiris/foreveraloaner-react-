@@ -125,11 +125,7 @@ GEM
     rb-fsevent (0.10.2)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
-<<<<<<< HEAD
     react-rails (2.4.1)
-=======
-    react-rails (1.11.0)
->>>>>>> 8e85745d296607154a2a22c62940fac8bcbdd5ec
       babel-transpiler (>= 0.7.0)
       connection_pool
       execjs

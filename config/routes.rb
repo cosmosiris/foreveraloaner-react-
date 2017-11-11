@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'categories/index'
+  
 
   devise_for :users  
   
@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   resources :categories, only: [:index, :show] do
    resources :posts, only: [:index, :show]
   end
+
+  get 'categories/index'
 
   root 'categories#index'
 end
