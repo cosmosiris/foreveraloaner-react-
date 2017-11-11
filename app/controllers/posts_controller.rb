@@ -15,7 +15,7 @@ class PostsController < ApplicationController
 			redirect_to post_path(@post)
 		else
 			@error = @resource.errors.full_messages
-			render :new 
+			render :new
 		end
 	end
 
@@ -35,13 +35,13 @@ class PostsController < ApplicationController
 	def destroy
 		@post = Post.find(params[:id])
 		@resource.destroy
-		redirect_to posts_path 
+		redirect_to posts_path
 	end
 
 	private
 
 	def post_params
-		params.require(:post).permit(:location, :title, :description, :price, :negotiable?, :post_type, :owner_id, :category_id)
+		params.require(:post).permit(:location, :title, :description, :price, :negotiable, :post_type, :loaner_id, :category_id)
 	end
 
 
