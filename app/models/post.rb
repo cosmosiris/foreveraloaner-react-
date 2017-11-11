@@ -1,9 +1,9 @@
 class Post < ApplicationRecord
-	belongs_to :owner, class: "User"
-	belongs_to :category
+	belongs_to 		:owner, class_name: "User"
+	belongs_to 		:category
 
-	has_many    :posts_tags
-	has_many	:tags, through: :posts_tags
+	has_many    	:posts_tags
+	has_many		:tags, through: :posts_tags
 	
 
 
