@@ -14,8 +14,8 @@ class PostsController < ApplicationController
 		if @post.save
 			render json: @post
 		else
-			@error = @post.errors.full_messages
-			render :new
+			@errors = @post.errors.full_messages
+			render json: @errors
 		end
 	end
 
@@ -30,8 +30,8 @@ class PostsController < ApplicationController
 		if @post.save
 			render json: @post
 		else
-			@error = @post.errors.full_messages
-			render :edit
+			@errors = @post.errors.full_messages
+			render json: @errors
 		end
 	end
 
@@ -41,9 +41,10 @@ class PostsController < ApplicationController
 
 	def destroy
 		@post = Post.find(params[:id])
+		@category = @post.category_id
 		@post.destroy
 
-		redirect_to posts_path(@post)
+		render json: @category
 	end
 
 	private

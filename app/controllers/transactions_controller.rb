@@ -1,5 +1,4 @@
 class TransactionsController < ApplicationController
-
   def new
     @transaction = Transaction.new
   end
@@ -11,8 +10,8 @@ class TransactionsController < ApplicationController
     if @transaction.save
       render json: @transaction
     else
-      @error = @transaction.errors.full_messages
-      render :new
+      @errors = @transaction.errors.full_messages
+      render json: @errors
     end
   end
 
@@ -28,8 +27,8 @@ class TransactionsController < ApplicationController
     if @transaction.save
       render json: @transaction
     else
-      @error = @transaction.errors.full_messages
-      render :edit
+      @errors = @transaction.errors.full_messages
+      render json: @errors
     end
   end
 

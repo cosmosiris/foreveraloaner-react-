@@ -4,4 +4,15 @@ Rails.application.routes.draw do
   resources :users, only: [:show] do
     resources :reviews
   end
+
+  resources :posts do
+    resources :transactions
+    resources :tags
+  end
+
+  resources :categories, only: [:index, :show] do
+   resources :posts, only: [:index, :show]
+  end
+
+
 end
