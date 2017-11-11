@@ -10,10 +10,69 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171110201141) do
+ActiveRecord::Schema.define(version: 20171111002825) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.string "price"
+    t.string "status", default: "open"
+    t.string "location"
+    t.boolean "negotiable?"
+    t.bigint "owner_id"
+    t.bigint "category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_posts_on_category_id"
+    t.index ["owner_id"], name: "index_posts_on_owner_id"
+  end
+
+  create_table "posts_tags", force: :cascade do |t|
+    t.bigint "posts_tags_id"
+    t.bigint "posts_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["posts_id"], name: "index_posts_tags_on_posts_id"
+    t.index ["posts_tags_id"], name: "index_posts_tags_on_posts_tags_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "rating"
+    t.text "body"
+    t.bigint "reviewer_id"
+    t.bigint "reviewee_id"
+    t.string "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["reviewee_id"], name: "index_reviews_on_reviewee_id"
+    t.index ["reviewer_id"], name: "index_reviews_on_reviewer_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "transactions", force: :cascade do |t|
+    t.bigint "borrower_id"
+    t.bigint "post_id"
+    t.string "duration"
+    t.integer "final_price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["borrower_id"], name: "index_transactions_on_borrower_id"
+    t.index ["post_id"], name: "index_transactions_on_post_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "first_name", null: false
