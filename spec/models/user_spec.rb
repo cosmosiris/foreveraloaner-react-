@@ -2,6 +2,7 @@ require 'rails_helper'
 
 describe User do
   let(:user) { User.create(first_name: "bob", last_name: "bob", bio: "A fun guy", phone_number: "888-888-8888", email: "bob@bob.com", password: "bobby123") }
+  let(:category) { Category.create(name: "Garden") }
 
   context "when input is valid" do
     it "saves user to the database" do
@@ -28,5 +29,14 @@ describe User do
       expect(User.all).to eq [user]
     end
   end
+
+  context "user posts" do
+    it "has many posts" do
+      post = Post.create(title: "Lawn Mower", description: "Mows your grass", status: "open", negotiable?: true, post_type: "stuff", owner: user, category: category)
+      expect(user.posts.first).to eq(post)   
+    end
+  end
 end
+
+
 
