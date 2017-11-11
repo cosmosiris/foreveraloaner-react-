@@ -5,7 +5,7 @@ class CreatePosts < ActiveRecord::Migration[5.1]
     	t.string  		:title
     	t.string		:description
     	t.string		:price
-    	t.string 		:status
+    	t.string 		:status, default: "open"
     	t.string 		:location
     	t.boolean		:negotiable?
     	t.string		:post_type
