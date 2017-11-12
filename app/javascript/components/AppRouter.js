@@ -7,6 +7,7 @@ import MyProfile from './MyProfile'
 import CreatePost from './CreatePost'
 import Header from './Header'
 import Footer from './Footer'
+import Registration from './Registration'
 
 
 class AppRouter extends React.Component {
@@ -18,7 +19,8 @@ class AppRouter extends React.Component {
       		<Switch>
   	            <Route exact path="/" component={App} />
   	            <Route exact path="/user/show" component={MyProfile} />
-  	            <Route exact path="/post/new" component={CreatePost} />     
+                <Route exact path="/post/new" component={CreatePost} />     
+  	            <Route exact path="/user/new" component={Registration} />     
   	        </Switch>   
             <Footer />  
         </div>      
