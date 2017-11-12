@@ -1,10 +1,15 @@
 import React from "react"
 import PropTypes from "prop-types"
+import Header from './Header'
+
 
 class MyProfile extends React.Component {
   render () {
     return(
-    	<h1>Hello this is my profile</h1>
+    	<div>
+	    	<Header />
+	    	<h1>My Profile Page</h1>	
+    	</div>
     )
   }
 }
