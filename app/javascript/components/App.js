@@ -8,7 +8,16 @@ import SearchForm from './SearchForm'
 
 
 class App extends React.Component {
+  constructor(){
+    super();
 
+    this.state = {
+      posts: {},
+      reviews: {},
+      transactions: {},
+      tags: {}
+    }
+  }
 
   render () {
     return(
