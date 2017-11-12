@@ -1,12 +1,10 @@
-class MessagesController < ApplicationController
+class Api::MessagesController < ApplicationController
   before_action :set_conversation
 
   def create
     receipt = current_user.send_message(@conversation, params([:body])
     redirect_to receipt.conversation
   end
-
-
 
   private
 

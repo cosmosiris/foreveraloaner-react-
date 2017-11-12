@@ -1,12 +1,8 @@
-class CategoriesController < ApplicationController
-  
+class Api::CategoriesController < ApplicationController
+
   def index
-    p 'early here'
     @categories = Category.all
-    respond_to do |f|
-    	f.js {render json: { categories: @categories }}
-    	f.html {p 'here'}
-    end
+    render json: { categories: @categories }
   end
 
   def show
@@ -14,5 +10,4 @@ class CategoriesController < ApplicationController
     @posts = @category.posts
     render json: { category: @category, posts: @posts }
   end
-
 end
