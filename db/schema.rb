@@ -21,28 +21,29 @@ ActiveRecord::Schema.define(version: 20171111002825) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "post_tags", force: :cascade do |t|
-    t.bigint "tag_id"
-    t.bigint "post_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["post_id"], name: "index_post_tags_on_post_id"
-    t.index ["tag_id"], name: "index_post_tags_on_tag_id"
-  end
-
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.string "description"
     t.string "price"
     t.string "status", default: "open"
     t.string "location"
-    t.boolean "negotiable"
-    t.bigint "loaner_id"
+    t.boolean "negotiable?"
+    t.string "post_type"
+    t.bigint "owner_id"
     t.bigint "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_posts_on_category_id"
-    t.index ["loaner_id"], name: "index_posts_on_loaner_id"
+    t.index ["owner_id"], name: "index_posts_on_owner_id"
+  end
+
+  create_table "posts_tags", force: :cascade do |t|
+    t.bigint "posts_tags_id"
+    t.bigint "posts_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["posts_id"], name: "index_posts_tags_on_posts_id"
+    t.index ["posts_tags_id"], name: "index_posts_tags_on_posts_tags_id"
   end
 
   create_table "reviews", force: :cascade do |t|
