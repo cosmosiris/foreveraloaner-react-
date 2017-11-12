@@ -25,5 +25,5 @@ Rails.application.routes.draw do
   root 'frontend#index'
 
   # Keep this line as the last line because it's our 'catch-all'
-  get "*path", to: 'frontendnap#index'
+  get "*path", to: 'frontend#index'
 end
