@@ -7,6 +7,10 @@ Rails.application.routes.draw do
   resources :users, only: [:show] do
     resources :reviews
   end
+  
+  resources :conversations do
+    resources :messages
+  end
 
   resources :posts do
     resources :transactions

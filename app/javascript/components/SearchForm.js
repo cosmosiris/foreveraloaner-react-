@@ -13,10 +13,7 @@ class SearchForm extends React.Component {
 
   render () {
     return(
-      <div>Hi
-      <form onSubmit={}>
-        <input value={} onChange />
-      </form>
+      <div>SEARCH FORM
       </div>
     )
   }
