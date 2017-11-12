@@ -1,11 +1,10 @@
 class CategoriesController < ApplicationController
-  
+
   def index
-    p 'early here'
     @categories = Category.all
     respond_to do |f|
-    	f.js {render json: { categories: @categories }}
-    	f.html {p 'here'}
+      f.html {}
+      f.js { render json: { categories: @categories } }
     end
   end
 
