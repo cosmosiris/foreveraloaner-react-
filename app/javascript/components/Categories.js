@@ -6,6 +6,7 @@ class Categories extends React.Component {
     return(
     	<div>
     		<p>List of Categories</p>
+
     	</div>
     )
   }

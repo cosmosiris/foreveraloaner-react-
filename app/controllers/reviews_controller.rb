@@ -8,7 +8,7 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
 
     if @review.save
-      render json: @review
+      redirect_to user_path(@reviewee)
     else
       @error = @review.errors.full_messages
       render :new
@@ -26,7 +26,7 @@ class ReviewsController < ApplicationController
 
     @review.update(review_params)
     if @review.save
-      render json: @review
+      redirect_to user_path(@reviewee)
     else
       render :edit
     end
