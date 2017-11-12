@@ -100,6 +100,7 @@ GEM
     pg (0.21.0)
     puma (3.10.0)
     rack (2.0.3)
+    rack-cors (1.0.2)
     rack-proxy (0.6.2)
       rack
     rack-test (0.7.0)
@@ -219,6 +220,7 @@ DEPENDENCIES
   mailboxer
   pg (~> 0.18)
   puma (~> 3.7)
+  rack-cors
   rails (~> 5.1.4)
   rails-controller-testing
   react-rails (~> 2.4.1)
