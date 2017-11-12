@@ -6,8 +6,6 @@ class Api::MessagesController < ApplicationController
     redirect_to receipt.conversation
   end
 
-
-
   private
 
   def set_conversation

@@ -1,4 +1,5 @@
 class Api::TransactionsController < ApplicationController
+
   def new
     @transaction = Transaction.new
   end

@@ -1,4 +1,5 @@
 class Api::TagsController < ApplicationController
+
   def create
     @post = Post.find(params[:post_id])
     @post_tag = @post.tags.find_or_create_by(tag_params)
