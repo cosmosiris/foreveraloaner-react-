@@ -2,6 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import Navbar from './Navbar'
 import Categories from './Categories'
+import SearchForm from './SearchForm'
 
 
 class App extends React.Component {
@@ -9,6 +10,7 @@ class App extends React.Component {
     return(
     	<div>
     		<Navbar />
+        <SearchForm />
     		<Categories />
     	</div>
     )
