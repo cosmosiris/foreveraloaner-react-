@@ -17,7 +17,7 @@ Rails.application.routes.draw do
    resources :posts, only: [:index, :show]
   end
 
-  get 'categories/index'
+  get "*path", to: 'categories#index'
 
   root 'categories#index'
 end
