@@ -1,4 +1,4 @@
-class Api::UsersController < ApplicationController
+exitclass Api::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
   end

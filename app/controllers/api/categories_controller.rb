@@ -2,9 +2,7 @@ class Api::CategoriesController < ApplicationController
 
   def index
     @categories = Category.all
-    respond_to do |f|
-    	f.js {render json: { categories: @categories }}
-    end
+    render json: { categories: @categories }
   end
 
   def show
