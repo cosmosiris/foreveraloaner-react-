@@ -1,6 +1,8 @@
 import React from "react"
 import PropTypes from "prop-types"
-import Navbar from './Navbar'
+import Header from './Header'
+import Footer from './Footer'
+import Main from './Main'
 import Categories from './Categories'
 
 
@@ -8,7 +10,9 @@ class App extends React.Component {
   render () {
     return(
     	<div>
-    		<Navbar />
+    		<Header />
+    		<Main />
+    		<Footer />
     		<Categories />
     	</div>
     )
