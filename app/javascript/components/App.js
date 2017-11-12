@@ -5,6 +5,13 @@ import Categories from './Categories'
 
 
 class App extends React.Component {
+  constructor() {
+    super();
+
+    this.state = {
+      categories: { }
+    }
+  }
   render () {
     return(
     	<div>

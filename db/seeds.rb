@@ -14,4 +14,8 @@ lender = User.create(first_name: "Olivia", last_name: "Noland", email:"olivia@no
 
 Review.create(rating: 3, body: "great", reviewer: borrower, reviewee: lender, role:"borrower")
 
+categories = ["kitchen appliances", "household items & appliances", "vehicle & automotive parts", "baby & kid products", "books", "vhs & dvds", "clothing", "accessories", "miscellaneous", "electronics", "farm & garden", "furniture", "musical instruments", "fitness & sporting equipment", "tools", "games", "trailers", "business & office supplies", "luggage & travel accessories", "party supplies", "outdoor equipment", "beauty products", "diy supplies"]
 
+categories.each do |category|
+  Category.create(name: category.upcase)
+end
