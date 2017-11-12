@@ -7,12 +7,10 @@ Rails.application.routes.draw do
   resources :users, only: [:show] do
     resources :reviews
   end
-<<<<<<< HEAD
   
   resources :conversations do
     resources :messages
   end
-=======
 
   resources :posts do
     resources :transactions
@@ -26,5 +24,4 @@ Rails.application.routes.draw do
   get "*path", to: 'categories#index'
 
   root 'categories#index'
->>>>>>> 052e2218fb5dcdfe777729ff2b6f2a65dd2ddd2d
 end
