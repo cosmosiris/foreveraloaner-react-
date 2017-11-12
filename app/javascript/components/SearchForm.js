@@ -13,7 +13,7 @@ class SearchForm extends React.Component {
 
   render () {
     return(
-      <div>SEARCH FORM
+      <div>SEARCH FORM COMPONENT
       </div>
     )
   }
