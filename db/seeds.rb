@@ -15,21 +15,21 @@ lender = User.create!(first_name: "Olivia", last_name: "Noland", email:"olivia@n
 
 categories = ["Accessories", "Baby & Kid Products", "Beauty Products", "Books", "Business & Office Supplies", "Clothing", "DIY Supplies", "Electronics", "Farm & Garden", "Fitness & Sporting Equipment", "Furniture", "Games", "Household Items & Appliances", "Kitchen Appliances", "Luggage & Travel Accessories", "Miscellaneous", "Musical Instruments", "Outdoor Equipment", "Party Supplies", "Tools", "Trailers", "Vehicle & Automotive Parts", "VHS & DVD" ]
 
-categories.each do |category|
-  Category.create!(name: category)
-end
+categories.map! { |category| Category.create(name: category) }
 
-Category.all.each do |category|
-  post_details = {
-    title: "title",
-    description: "description",
-    price: 40,
-    status: "open",
-    location: "location",
-    negotiable: "true",
-    loaner: borrower
-  }
-  category.posts.create!(post_details)
+categories.each do |category|
+  10.times do
+    post_details = {
+      title: Faker::Commerce.product_name,
+      description: Faker::HarryPotter.quote,
+      price: Faker::Number.decimal(2),
+      status: "open",
+      location: Faker::Address.zip,
+      negotiable: "true",
+      loaner: borrower
+    }
+    category.posts.create!(post_details)
+  end
 end
 
 Review.create(rating: 3, body: "great", reviewer: borrower, reviewee: lender, role:"borrower")
