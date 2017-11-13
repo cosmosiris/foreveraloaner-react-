@@ -20,6 +20,9 @@ Rails.application.routes.draw do
     resources :categories, only: [:index, :show] do
       resources :posts, only: [:index, :show]
     end
+
+    # resources :search, only: [:index]
+    get '/search', :to => 'search#index'
   end
 
   root 'frontend#index'
