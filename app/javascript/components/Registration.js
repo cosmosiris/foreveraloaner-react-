@@ -23,9 +23,6 @@ class Registration extends React.Component {
         this.updateLastName = this.updateLastName.bind(this);
         this.updateEmail = this.updateEmail.bind(this);
         this.updatePassword = this.updatePassword.bind(this);
-        this.redirect = this.redirect.bind(this);
-
-        // this.submitFormData = this.submitFormData.bind(this);
     }
 
     updateFirstName(event){
@@ -64,17 +61,12 @@ class Registration extends React.Component {
             }
             }).then(function(response){
                 console.log(response.data)
-                // this.setState({ redirectToNewPage: true, data: response.data })
             }).catch(function(error){
                 console.log(error)
             })
-            this.redirect();
 
     }
 
-    redirect(){
-            browserHistory.push('/')
-    }
 
     render () {
         return(
