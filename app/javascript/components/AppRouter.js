@@ -24,7 +24,7 @@ class AppRouter extends React.Component {
           <Header />
       		<Switch>
             <Route exact path="/" component={App} />
-            <Route exact path="/categories/:categoryId" component={Category} />
+            <Route path="/categories/:id" component={Category} />
             <Route exact path="/user/show" component={MyProfile} />
             <Route exact path="/post/new" component={CreatePost} />
   	       </Switch>

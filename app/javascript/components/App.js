@@ -33,7 +33,7 @@ class App extends React.Component {
         <SearchForm />
         <ul className="category-list">
           {
-            this.state.categories.map(category => <CategoriesContainer key={category.id} id= {category.id} name={category.name} />)
+            this.state.categories.map(category => <CategoriesContainer key={category.id} id={category.id} name={category.name} />)
           }
         </ul>
       </div>

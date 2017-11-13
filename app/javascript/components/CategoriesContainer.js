@@ -8,15 +8,6 @@ class CategoriesContainer extends React.Component {
     super();
   }
 
-  componentDidMount() {
-    axios.get(`http://localhost:3000/api/categories/${this.props.id}`)
-    .then(res => {
-      const posts = res.data.posts.map( (post) =>
-        ({id: post.id, title: post.title, description: post.description, price: post.price, status: post.status, location: post.location, negotiable: post.negotiable}))
-      this.setState( {posts} )
-    })
-  }
-
   render () {
     return(
       <div>
