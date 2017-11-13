@@ -18,24 +18,13 @@ class App extends React.Component {
     }
   }
 
-  componentDidMount() {
-    axios.get('http://localhost:3000/api/categories')
-    .then(res => {
-      const categories = res.data.categories.map( (category) =>
-        ({id: category.id, name: category.name }))
-      this.setState( {categories} )
-    })
-  }
+
 
   render () {
     return(
     	<div>
         <SearchForm />
-        <ul className="category-list">
-          {
-            this.state.categories.map(category => <CategoriesContainer key={category.id} id={category.id} name={category.name} />)
-          }
-        </ul>
+        <CategoriesContainer />
       </div>
     )
   }

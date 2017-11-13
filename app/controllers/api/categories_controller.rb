@@ -1,8 +1,8 @@
 class Api::CategoriesController < ApplicationController
 
   def index
-    @categories = Category.all
-    render json: { categories: @categories }
+    @categories = Category.all.includes(:posts)
+    render json: { categories: @categories.to_json(include: :posts) }
   end
 
   def show

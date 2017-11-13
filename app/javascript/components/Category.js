@@ -29,6 +29,7 @@ class Category extends React.Component {
         {
           this.state.posts.map(post => <PostsContainer key= {post.id} id={post.id} title={post.title} description={post.description} price={post.price} status={post.status} location={post.location} negotiable={post.negotiable} />)
         }
+        <li><Link to={`/categories/${this.props.id}`}>{this.props.name}</Link></li>
       </div>
     )
   }
