@@ -7,6 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 User.destroy_all
 Review.destroy_all
+Category.destroy_all
+Post.destroy_all
 
 borrower = User.create!(first_name: "britt", last_name: "nevins", email:"britt@nevins.com", password: "asdfasdfasdf")
 lender = User.create!(first_name: "Olivia", last_name: "Noland", email:"olivia@noland.com", password: "asdfasdfasdf")
@@ -15,6 +17,19 @@ categories = ["Accessories", "Baby & Kid Products", "Beauty Products", "Books", 
 
 categories.each do |category|
   Category.create!(name: category)
+end
+
+Category.all.each do |category|
+  post_details = {
+    title: "title",
+    description: "description",
+    price: 40,
+    status: "open",
+    location: "location",
+    negotiable: "true",
+    loaner: borrower
+  }
+  category.posts.create!(post_details)
 end
 
 Review.create(rating: 3, body: "great", reviewer: borrower, reviewee: lender, role:"borrower")
