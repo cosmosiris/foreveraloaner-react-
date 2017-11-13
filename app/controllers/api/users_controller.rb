@@ -15,6 +15,7 @@ class Api::UsersController < ApplicationController
 
 		if @user.save
 			render json: @user
+			# redirect_to api_user_path
 		else
 			@errors = @user.errors.full_messages
 			render json: @errors

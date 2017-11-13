@@ -1,6 +1,9 @@
-import React from "react"
-import PropTypes from "prop-types"
-import axios from 'axios'
+import React from "react";
+import PropTypes from "prop-types";
+import axios from 'axios';
+import MyProfile from './MyProfile';
+import { Link } from 'react-router-dom';
+import { BrowserHistory } from 'react-router';
 
 class Registration extends React.Component {
     constructor(){
@@ -10,12 +13,18 @@ class Registration extends React.Component {
             lastName: '',
             email: '',
             password: '',
-        }}
+                    },
+        redirectToNewPage: false, 
+        data: ""
+        };
+
         this.handleSubmit = this.handleSubmit.bind(this);
         this.updateFirstName = this.updateFirstName.bind(this);
         this.updateLastName = this.updateLastName.bind(this);
         this.updateEmail = this.updateEmail.bind(this);
         this.updatePassword = this.updatePassword.bind(this);
+        this.redirect = this.redirect.bind(this);
+
         // this.submitFormData = this.submitFormData.bind(this);
     }
 
@@ -46,7 +55,6 @@ class Registration extends React.Component {
     handleSubmit(event){
         event.preventDefault();
         console.log(this.state);
-
          axios.post('/api/users', { 
             user: {
                 first_name: this.state.formData.firstName, 
@@ -55,12 +63,19 @@ class Registration extends React.Component {
                 password: this.state.formData.password 
             }
             }).then(function(response){
-                console.log(response);
+                console.log(response.data)
+                // this.setState({ redirectToNewPage: true, data: response.data })
             }).catch(function(error){
                 console.log(error)
             })
+            this.redirect();
+
     }
-    
+
+    redirect(){
+            browserHistory.push('/')
+    }
+
     render () {
         return(
         	<div className="Registration" style={{height: '200px', backgroundColor: 'honeydew'}}>
@@ -78,3 +93,8 @@ class Registration extends React.Component {
 }
 
 export default Registration
+
+
+// {if (this.state.redirectToNewPage === true) {
+// <Link to={`/api/user/${this.state.data.id}`} />
+// }}
