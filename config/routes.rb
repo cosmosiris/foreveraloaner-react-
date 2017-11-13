@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  # devise_for :users 
 
   namespace :api do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-    resources :users, only: [:show] do
+    resources :users do
       resources :reviews
-    end
+    end 
 
     resources :conversations do
       resources :messages
@@ -20,6 +20,9 @@ Rails.application.routes.draw do
     resources :categories, only: [:index, :show] do
       resources :posts, only: [:index, :show]
     end
+
+    # resources :search, only: [:index]
+    get '/search', :to => 'search#index'
   end
 
   root 'frontend#index'

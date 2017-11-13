@@ -34,6 +34,10 @@ end
 
 Review.create(rating: 3, body: "great", reviewer: borrower, reviewee: lender, role:"borrower")
 
+categories = ["Accessories", "Baby & Kid Products", "Beauty Products", "Books", "Business & Office Supplies", "Clothing", "DIY Supplies", "Electronics", "Farm & Garden", "Fitness & Sporting Equipment", "Furniture", "Games", "Household Items & Appliances", "Kitchen Appliances", "Luggage & Travel Accessories", "Miscellaneous", "Musical Instruments", "Outdoor Equipment", "Party Supplies", "Tools", "Trailers", "Vehicle & Automotive Parts", "VHS & DVD" ]
+categories.each do |category|
+  Category.create!(name: category.downcase)
+end
 
 
 
