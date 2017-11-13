@@ -9,7 +9,7 @@ class Header extends React.Component {
     		<h2>HEADER COMPONENT</h2>
     		<ul>
     			<li><Link to="/">Home</Link></li>
-    			<li><Link to="/user/show">My Profile</Link></li>
+    			<li><Link to="api/user/:id">My Profile</Link></li>
                 <li><Link to="/post/new">Create Post</Link></li>
                 <li><Link to="/session/new">login</Link></li>
     			<li><Link to="/user/new">Register</Link></li>
