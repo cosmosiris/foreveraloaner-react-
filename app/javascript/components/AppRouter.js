@@ -6,6 +6,7 @@ import App from './App'
 import MyProfile from './MyProfile'
 import CreatePost from './CreatePost'
 import Header from './Header'
+import Post from './Post'
 import Footer from './Footer'
 import CategoriesContainer from './CategoriesContainer'
 import Category from './Category'
@@ -25,6 +26,7 @@ class AppRouter extends React.Component {
       		<Switch>
             <Route exact path="/" component={App} />
             <Route path="/categories/:id" component={Category} />
+            <Route path="/posts/:id" component={Post} />
             <Route exact path="/user/show" component={MyProfile} />
             <Route exact path="/post/new" component={CreatePost} />
   	       </Switch>
