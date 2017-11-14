@@ -3,33 +3,14 @@ import PropTypes from "prop-types"
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import PostsContainer from './PostsContainer'
+import Post from './Post'
 
 class Category extends React.Component {
-
-  constructor() {
-    super();
-
-    this.state = {
-      posts: []
-    }
-  }
-
-  componentDidMount() {
-    axios.get(`http://localhost:3000/api/categories/${this.props.match.params.id}`)
-    .then(res => {
-      const posts = res.data.posts.map( (post) =>
-        ({id: post.id, title: post.title, description: post.description, price: post.price, status: post.status, location: post.location, negotiable: post.negotiable}))
-      this.setState( {posts} )
-    })
-  }
 
   render () {
     return(
       <div>
-        {
-          this.state.posts.map(post => <PostsContainer key= {post.id} id={post.id} title={post.title} description={post.description} price={post.price} status={post.status} location={post.location} negotiable={post.negotiable} />)
-        }
-        <li><Link to={`/categories/${this.props.id}`}>{this.props.name}</Link></li>
+        <PostsContainer categoryId={this.props.match.params.id}/>
       </div>
     )
   }

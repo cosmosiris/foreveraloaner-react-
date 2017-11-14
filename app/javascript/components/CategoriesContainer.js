@@ -16,8 +16,7 @@ class CategoriesContainer extends React.Component {
   componentDidMount() {
     axios.get('http://localhost:3000/api/categories')
     .then(res => {
-      const categories = res.data.categories.map( (category) =>
-        ({id: category.id, name: category.name }))
+      const categories = res.data.categories
       this.setState( {categories} )
     })
   }
@@ -25,7 +24,7 @@ class CategoriesContainer extends React.Component {
   render () {
     return(
       <ul className="category-list">
-        { this.state.categories.map(category => <Category key={category.id} id={category.id} name={category.name} />) }
+        { this.state.categories.map(category => <li key={category.name}><Link to={`/categories/${category.id}`}>{category.name}</Link></li>) }
       </ul>
     )
   }
